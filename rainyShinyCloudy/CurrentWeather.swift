@@ -79,9 +79,13 @@ class CurrentWeather {
                 }
                 
                 if let main = dict["main"] as? Dictionary<String,AnyObject> {
-                    if let temp = main["temp"] as? Double {
-                        self._currentTemp = lround(temp - 273.15)
-                        print(self._currentTemp)
+                    if let currentTempature = main["temp"] as? Double {
+                        
+                        let kalvinToCellsium = lround(currentTempature - 273.15)
+                
+                        self._currentTemp = kalvinToCellsium
+                        
+                        print(self.currentTemp)
                         
                     }
                 }
@@ -91,11 +95,7 @@ class CurrentWeather {
                 
                 
             }
-            
+            completed()
         }
-        
-        completed()
-        
     }
-    
 }
